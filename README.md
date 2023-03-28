@@ -22,28 +22,33 @@ TODO
 
 ## Run Locally
 
-Clone the project
+- Clone the project
 
 ```bash
   git clone https://github.com/Virkkunen/weather.git
 ```
 
-Go to the project directory
+- Go to the project directory
 
 ```bash
   cd weather
 ```
 
-Install dependencies
+- Install dependencies
 
 ```bash
   npm i
 ```
 
-Start the server
+- Start the server
 
 ```bash
   npm run dev
+```
+
+- Create the `.env` file on the root of the project and add your [OpenWeatherMap API key](https://home.openweathermap.org/api_keys)
+```bash
+VITE_OPENWEATHERMAP_API_KEY=YOUR_API_KEY_HERE
 ```
 
 
