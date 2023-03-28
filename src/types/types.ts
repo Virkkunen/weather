@@ -1,7 +1,7 @@
 export type WeatherContextType = {
   weatherData: WeatherData | null;
   error: string | null;
-  isLoading: boolean | null;
+  isLoading: boolean;
 };
 
 export interface WeatherData {

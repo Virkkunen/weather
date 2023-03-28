@@ -3,15 +3,24 @@ import WeatherContext from '../context/WeatherContext';
 
 export default function WeatherDisplay() {
   const { weatherData } = useContext(WeatherContext);
+  const { main, weather } = weatherData!; // TODO: change to weatherData ?? {} and properly validate
+  const iconSrc = `http://openweathermap.org/img/wn/${weather[0].icon}.png`
+
   return (
-    <div className='m-4 p-8 rounded-lg flex flex-col bg-surface0'>
-      <div className='flex justify-around'>
-      <span className='text-6xl font-mono mb-4 text-center'>{weatherData?.main.temp}°</span>
+    <>
+      <div className='m-4 p-8 rounded-lg bg-surface0 flex flex-col justify-center'>
+        <div className='flex flex-col mb-4 text-center'>
+          <span className='text-6xl font-mono mb-2'>
+            {main.temp.toFixed(0)}°
+          </span>
+          <span>{weather[0].description}</span>
+          <img src={iconSrc} alt={weather[0].description} className='w-24 mx-auto' />
+        </div>
+        <div className='flex justify-around'>
+          <span className='font-mono'>min: {main.temp_min.toFixed(0)}°</span>
+          <span className='font-mono'>max: {main.temp_max.toFixed(0)}°</span>
+        </div>
       </div>
-      <div className='flex justify-around'>
-        <span className='font-mono'>min: {weatherData?.main.temp_min}°</span>
-        <span className='font-mono'>max: {weatherData?.main.temp_max}°</span>
-      </div>
-    </div>
+    </>
   );
 }
