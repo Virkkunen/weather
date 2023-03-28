@@ -1,13 +1,17 @@
-import './App.css'
+import './App.css';
+import Header from './components/Header';
+import Weather from './components/Weather';
+import { CityProvider } from './context/CityProvider';
 
 function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold bg-base text-pink">
-        Hello world!
-      </h1>
-    </div>
-  )
+    <CityProvider>
+      <div>
+        <Header />
+        <Weather />
+      </div>
+    </CityProvider>
+  );
 }
 
-export default App
+export default App;
