@@ -1,6 +1,6 @@
 {
-  "short_name": "Dice",
-  "name": "Dice roller",
+  "short_name": "Weather",
+  "name": "Weather",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#222323",
-  "background_color": "#222323"
+  "theme_color": "#11111b",
+  "background_color": "#11111b"
 }
