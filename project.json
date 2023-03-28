@@ -1,0 +1,72 @@
+{
+  "name": "weather",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "./src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/weather"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "weather:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "weather:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "weather:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nrwl/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "weather:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "weather:build:development"
+        },
+        "production": {
+          "buildTarget": "weather:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/weather"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "coverage/weather"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["./src/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
