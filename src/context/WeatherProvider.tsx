@@ -8,7 +8,7 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchWeather = async (lat: number, lon: number) => {
-    const apiKey = 'b9c3d2373adfa2f6f8107df3c60b4486';
+    const apiKey = import.meta.env.VITE_OPENWEATHERMAP_API_KEY;
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
     try {
       setIsLoading(true);
