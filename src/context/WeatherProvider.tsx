@@ -5,7 +5,7 @@ import { WeatherData, Props, ApiError } from '../types/types';
 const WeatherProvider: React.FC<Props> = ({ children }) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchWeather = async (lat: number, lon: number) => {
     const apiKey = import.meta.env.VITE_OPENWEATHERMAP_API_KEY;
