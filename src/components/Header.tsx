@@ -6,7 +6,6 @@ export default function Header() {
   return (
     <div className='container mx-auto text-center p-8 bg-slate-800'>
       {weatherData && <h1>{weatherData.name}</h1>}
-      {isLoading && <h1>Loading</h1>}
       {error && <p>{error}</p>}
     </div>
   );
