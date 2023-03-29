@@ -9,7 +9,6 @@ export default function WeatherDisplay() {
 
   const iconSrc = `http://openweathermap.org/img/wn/${weather[0].icon}.png`;
   const windDirection = windDegreeToDirection(wind.deg);
-  const windArrow = `rotate-[${wind.deg}deg]`;
 
   return (
     <div className='m-4 p-8 rounded-lg bg-surface0 flex flex-col place-content-center drop-shadow hover:drop-shadow-lg md:max-w-md md:mx-auto'>
@@ -36,7 +35,7 @@ export default function WeatherDisplay() {
           <span className='mr-2'>
             wind: {wind.speed} km/h {windDirection}
           </span>
-          <FaArrowUp className={`${windArrow} my-auto`} />
+          <FaArrowUp className='my-auto' style={{ transform: `rotate(${wind.deg}deg)` }} />
         </div>
       </div>
     </div>
