@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { FaArrowUp } from 'react-icons/fa';
 import WeatherContext from '../context/WeatherContext';
 import windDegreeToDirection from '../utils/windDegreeToDirection';
 
@@ -8,12 +9,13 @@ export default function WeatherDisplay() {
 
   const iconSrc = `http://openweathermap.org/img/wn/${weather[0].icon}.png`
   const windDirection = windDegreeToDirection(wind.deg);
+  const windArrow = `rotate-[${wind.deg}deg]`;
 
   return (
     <>
-      <div className='m-4 p-8 rounded-lg bg-surface0 flex flex-col justify-center'>
+      <div className='m-4 p-8 rounded-lg bg-surface0 flex flex-col place-content-center'>
 
-        <div className='flex flex-col mb-4 text-center'>
+        <div className='flex flex-col mb-4'>
           <span className='text-6xl font-mono mb-2'>
             {main.temp.toFixed(0)}°
           </span>
@@ -26,9 +28,10 @@ export default function WeatherDisplay() {
           <span className=''>max: {main.temp_max.toFixed(0)}°</span>
         </div>
 
-        <div className='flex justify-around'>
+        <div className='flex justify-between content-center'>
           <span>humidity: {main.humidity}%</span>
           <span>wind: {wind.speed}km/h {windDirection}</span>
+          <FaArrowUp className={`${windArrow} my-auto`} />
         </div>
 
       </div>
