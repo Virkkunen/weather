@@ -13,7 +13,8 @@ const WeatherContext = createContext<WeatherContextType>({
   setError: (err: any) => {},
   searchDisplay: false,
   setSearchDisplay: () => {},
-  setIsLoading: () => {},
+  setSearchLoading: () => {},
+  searchLoading: false,
 });
 
 export default WeatherContext;

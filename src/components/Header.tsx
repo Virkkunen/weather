@@ -5,14 +5,18 @@ import { FaSearch, FaStar, FaRegStar } from 'react-icons/fa';
 import { Transition } from '@headlessui/react';
 
 export default function Header() {
-  const { weatherData, searchDisplay, setSearchDisplay } =
+  const { weatherData, searchDisplay, setSearchDisplay, searchLoading } =
     useContext(WeatherContext);
 
   const handleClick = () => setSearchDisplay(!searchDisplay);
 
   return (
     <>
-      <div className={`container grid grid-flow-col grid-cols-6 grid-rows-1 mx-auto p-8 ${!searchDisplay && `rounded-b-lg`} bg-base drop-shadow ease-in-out duration-200`}>
+      <div
+        className={`container grid grid-flow-col grid-cols-6 grid-rows-1 mx-auto p-8 ${
+          !searchDisplay && `rounded-b-lg`
+        } bg-base drop-shadow ease-in-out duration-200`}
+      >
         <button
           type='button'
           className='m-auto col-start-1 col-span-1 hover:text-lavender active:text-opacity-60 ease-in-out duration-200'
@@ -20,11 +24,10 @@ export default function Header() {
         >
           <FaSearch size='20px' />
         </button>
-        {weatherData && (
-          <span className='text-xl text-center my-auto col-start-2 col-span-4'>
-            {weatherData.name}
-          </span>
-        )}
+        <span className='text-xl text-center my-auto col-start-2 col-span-4'>
+          {weatherData && !searchLoading && weatherData.name}
+          {searchLoading && 'Finding city...'}
+        </span>
         <button
           type='button'
           className='m-auto col-start-6 col-span-1 hover:text-peach active:text-opacity-60 ease-in-out duration-200'
@@ -33,17 +36,17 @@ export default function Header() {
         </button>
       </div>
       <Transition
-          show={searchDisplay}
-          enter='transition duration-150 easy-out'
-          enterFrom='opacity-0 transform -translate-y-2'
-          enterTo='opacity-100 transform translate-y-0'
-          leave='transition duration-150 easy-in'
-          leaveFrom='transform translate-y-0 opacity-100 '
-          leaveTo='opacity-0 transform -translate-y-2'
-          className='container bg-base drop-shadow px-4 mb-4 pb-4 rounded-b-lg'
-        >
-          <SearchBar />
-        </Transition>
+        show={searchDisplay}
+        enter='transition duration-150 easy-out'
+        enterFrom='opacity-0 transform -translate-y-2'
+        enterTo='opacity-100 transform translate-y-0'
+        leave='transition duration-150 easy-in'
+        leaveFrom='transform translate-y-0 opacity-100 '
+        leaveTo='opacity-0 transform -translate-y-2'
+        className='container bg-base drop-shadow px-4 mb-4 pb-4 rounded-b-lg'
+      >
+        <SearchBar />
+      </Transition>
     </>
   );
 }

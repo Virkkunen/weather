@@ -10,7 +10,8 @@ export type WeatherContextType = {
   setError: (err: any) => void;
   searchDisplay: boolean;
   setSearchDisplay: (arg0: boolean) => void;
-  setIsLoading: (arg0: boolean) => void;
+  searchLoading: boolean;
+  setSearchLoading: (arg0: boolean) => void;
 };
 
 export interface WeatherData {

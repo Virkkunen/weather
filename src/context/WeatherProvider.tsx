@@ -9,6 +9,7 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [searchDisplay, setSearchDisplay] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchLoading, setSearchLoading] = useState(false);
   const { searchQuery, setSearchQuery, handleSearchSubmit } = useSearch();
   const { coordinates, error, setError } = useGeolocation();
 
@@ -50,7 +51,8 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
       setError,
       searchDisplay,
       setSearchDisplay,
-      setIsLoading,
+      searchLoading,
+      setSearchLoading,      
     }),
     [
       weatherData,
@@ -64,7 +66,8 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
       setError,
       searchDisplay,
       setSearchDisplay,
-      setIsLoading,
+      searchLoading,
+      setSearchLoading, 
     ]
   );
 

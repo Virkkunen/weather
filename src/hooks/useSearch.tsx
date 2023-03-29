@@ -10,7 +10,7 @@ interface SearchState {
 
 export const useSearch = (): SearchState => {
   const [searchQuery, setSearchQuery] = useState('');
-  const { fetchWeather, setWeatherData, setError, setSearchDisplay, setIsLoading } = useContext(WeatherContext);
+  const { fetchWeather, setWeatherData, setError, setSearchDisplay, setSearchLoading } = useContext(WeatherContext);
 
   const handleSearchChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value),
@@ -21,7 +21,7 @@ export const useSearch = (): SearchState => {
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       try {
-        setIsLoading(true);
+        setSearchLoading(true);
         const data = await fetchWeather(null, null, searchQuery);
         setWeatherData(data!);
         setError(null);
@@ -30,7 +30,7 @@ export const useSearch = (): SearchState => {
         setError({ code: 404, message: err });
       } finally {
         setSearchQuery('');
-        setIsLoading(false);
+        setSearchLoading(false);
       }
     },
     [searchQuery]
