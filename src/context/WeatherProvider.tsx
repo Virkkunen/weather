@@ -1,46 +1,66 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import WeatherContext from './WeatherContext';
-import { WeatherData, Props, ApiError } from '../types/types';
+import { WeatherData, Props } from '../types/types';
+import { useSearch } from '../hooks/useSearch';
+import { useGeolocation } from '../hooks/useGeolocation';
+import fetchWeather from '../utils/fetchWeather';
 
 const WeatherProvider: React.FC<Props> = ({ children }) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  const fetchWeather = async (lat: number, lon: number) => {
-    const apiKey = import.meta.env.VITE_OPENWEATHERMAP_API_KEY;
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-    try {
-      setIsLoading(true);
-
-      const response = await fetch(apiUrl);
-
-      if (!response.ok) {
-        const apiError: ApiError = new Error(
-          `Error ${response.status} while fetching data from ${apiUrl}`
-        );
-        apiError.response = response;
-        throw apiError;
-      }
-      const data = await response.json();
-      setWeatherData(data);
-    } catch (err: any) {
-      setError(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { searchQuery, setSearchQuery, handleSearchSubmit } = useSearch();
+  const { coordinates } = useGeolocation();
 
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos) => fetchWeather(pos.coords.latitude, pos.coords.longitude));
+    if (!coordinates) {
+      setIsLoading(false);
+      return;
     }
-  }, []);
+
+    const { latitude, longitude } = coordinates;
+    const fetchWeatherData = async () => {
+      try {
+        setIsLoading(true);
+        const data = await fetchWeather(latitude, longitude);
+        setWeatherData(data);
+      } catch (err: any) {
+        setError(err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchWeatherData();
+  }, [coordinates]);
+
+  useEffect(() => {}, []);
+
+  const value = useMemo(
+    () => ({
+      weatherData,
+      error,
+      isLoading,
+      searchQuery,
+      setSearchQuery,
+      handleSearchSubmit,
+      fetchWeather,
+      setWeatherData,
+    }),
+    [
+      weatherData,
+      error,
+      isLoading,
+      searchQuery,
+      setSearchQuery,
+      handleSearchSubmit,
+      fetchWeather,
+      setWeatherData,
+    ]
+  );
 
   return (
-    <WeatherContext.Provider value={{ weatherData, error, isLoading }}>
-      { children }
-    </WeatherContext.Provider>
+    <WeatherContext.Provider value={value}>{children}</WeatherContext.Provider>
   );
 };
 

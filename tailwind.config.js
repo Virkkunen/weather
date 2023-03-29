@@ -14,7 +14,8 @@ export default {
   plugins: [
     require('@catppuccin/tailwindcss')({
       defaultFlavour: 'mocha'
-    })
+    }),
+    require('@tailwindcss/forms'),
   ],
 }
 

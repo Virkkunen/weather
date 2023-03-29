@@ -2,6 +2,11 @@ export type WeatherContextType = {
   weatherData: WeatherData | null;
   error: string | null;
   isLoading: boolean;
+  searchQuery: string | null;
+  setSearchQuery: (query: string) => void;
+  handleSearchSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  fetchWeather: (lat: number | null, lon: number | null, query: string | undefined) => void;
+  setWeatherData: (data: WeatherData) => void;
 };
 
 export interface WeatherData {
