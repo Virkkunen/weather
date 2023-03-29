@@ -13,7 +13,7 @@ export default function WeatherDisplay() {
 
   return (
     <>
-      <div className='m-4 p-8 rounded-lg bg-surface0 flex flex-col place-content-center'>
+      <div className='m-4 p-8 rounded-lg bg-surface0 flex flex-col place-content-center drop-shadow hover:drop-shadow-lg'>
         <div className='flex flex-col mb-4 relative'>
           <span className='text-6xl font-mono mb-2'>
             {main.temp.toFixed(0)}°

@@ -3,7 +3,7 @@ import { FaCode, FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className='fixed bottom-0 bg-mantle flex p-4 w-full justify-evenly content-baseline'>
+    <footer className='fixed bottom-0 bg-mantle flex p-4 w-full justify-around content-baseline shadow-md text-sm'>
       <a
         href='https://github.com/Virkkunen'
         target='_blank'
