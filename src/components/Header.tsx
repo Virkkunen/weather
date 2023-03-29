@@ -43,7 +43,7 @@ export default function Header() {
         leave='transition duration-150 easy-in'
         leaveFrom='transform translate-y-0 opacity-100 '
         leaveTo='opacity-0 transform -translate-y-2'
-        className='container bg-base drop-shadow px-4 mb-4 pb-4 rounded-b-lg'
+        className='container bg-base drop-shadow px-4 mb-4 pb-4 rounded-b-lg mx-auto'
       >
         <SearchBar />
       </Transition>
