@@ -12,6 +12,7 @@ export const SearchBar = () => {
         className='form-input mt-0 block w-full md:w-full md:mx-auto px-0.5 border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-lavender bg-inherit caret-lavender'
         value={searchQuery}
         onChange={handleSearchChange}
+        autoFocus
       />
     </form>
   );
