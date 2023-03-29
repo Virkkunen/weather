@@ -1,3 +1,4 @@
+import { Transition } from '@headlessui/react';
 import { useContext } from 'react';
 import ErrorBox from './components/ErrorBox';
 import Footer from './components/Footer';
@@ -9,11 +10,31 @@ import WeatherContext from './context/WeatherContext';
 function App() {
   const { isLoading, weatherData, error } = useContext(WeatherContext);
   return (
-    <div className='grid grid-cols-1 grid-rows-1 grid-flow-row place-content-center ease-in-out duration-200'>
+    <div className='grid grid-cols-1 grid-rows-1 grid-flow-row place-content-center transition-all ease-in-out duration-300'>
       {isLoading && <Loading />}
       <Header />
-      {error && <ErrorBox />}
-      {weatherData && <WeatherDisplay />}
+      <Transition
+        show={Boolean(error)}
+        enter='transition-opacity duration-75'
+        enterFrom='opacity-0'
+        enterTo='opacity-100'
+        leave='transition-opacity duration-150'
+        leaveFrom='opacity-100'
+        leaveTo='opacity-0'
+      >
+        <ErrorBox />
+      </Transition>
+      <Transition
+        show={Boolean(weatherData)}
+        enter='transition-opacity duration-75'
+        enterFrom='opacity-0'
+        enterTo='opacity-100'
+        leave='transition-opacity duration-150'
+        leaveFrom='opacity-100'
+        leaveTo='opacity-0'
+      >
+        {weatherData && <WeatherDisplay />}
+      </Transition>
       <Footer />
     </div>
   );
