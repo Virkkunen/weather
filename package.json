@@ -1,7 +1,7 @@
 {
   "name": "weather",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://virkkunen.github.io/weather",
   "license": "GPL-3.0-or-later",
   "type": "module",
