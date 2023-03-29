@@ -55,7 +55,7 @@ function App() {
           leaveTo='opacity-0'
           className='md:flex-auto'
         >
-          {weatherData && !searchLoading && <WeatherDisplay />}
+          {weatherData && !searchLoading && <SkeletonDisplay />}
           {searchLoading && <SkeletonDisplay />}
         </Transition>
       </div>

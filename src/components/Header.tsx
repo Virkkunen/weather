@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import WeatherContext from '../context/WeatherContext';
-import { FaSearch, FaStar, FaRegStar } from 'react-icons/fa';
+import { FaSearch, FaCog } from 'react-icons/fa';
 
 export default function Header() {
   const { weatherData, searchDisplay, setSearchDisplay, searchLoading } =
@@ -26,9 +26,9 @@ export default function Header() {
       </span>
       <button
         type='button'
-        className='m-auto col-start-6 col-span-1 hover:text-peach active:text-opacity-60 ease-in-out duration-200'
+        className='m-auto col-start-6 col-span-1 hover:text-green active:text-opacity-60 ease-in-out duration-200'
       >
-        <FaRegStar size='20px' />
+        <FaCog size='20px' />
       </button>
     </div>
   );
