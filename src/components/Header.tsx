@@ -34,12 +34,12 @@ export default function Header() {
       </div>
       <Transition
           show={searchDisplay}
-          enter='transition-opacity duration-150 easy-in-out'
-          enterFrom='opacity-0'
-          enterTo='opacity-100'
-          leave='transition-opacity duration-300 easy-in-out'
-          leaveFrom='opacity-100'
-          leaveTo='opacity-0'
+          enter='transition duration-150 easy-out'
+          enterFrom='opacity-0 transform -translate-y-2'
+          enterTo='opacity-100 transform translate-y-0'
+          leave='transition duration-150 easy-in'
+          leaveFrom='transform translate-y-0 opacity-100 '
+          leaveTo='opacity-0 transform -translate-y-2'
           className='container bg-base drop-shadow px-4 mb-4 pb-4 rounded-b-lg'
         >
           <SearchBar />
