@@ -12,7 +12,7 @@ export default function Header() {
 
   return (
     <>
-      <div className='container grid grid-flow-col grid-cols-6 grid-rows-2 mx-auto p-8 mb-4 rounded-b-lg bg-base drop-shadow place ease-in-out duration-200'>
+      <div className={`container grid grid-flow-col grid-cols-6 grid-rows-1 mx-auto p-8 ${!searchDisplay && `rounded-b-lg`} bg-base drop-shadow ease-in-out duration-200`}>
         <button
           type='button'
           className='m-auto col-start-1 col-span-1 hover:text-lavender active:text-opacity-60 ease-in-out duration-200'
@@ -31,19 +31,19 @@ export default function Header() {
         >
           <FaRegStar size='20px' />
         </button>
-        <Transition
+      </div>
+      <Transition
           show={searchDisplay}
-          enter='transition-opacity duration-75'
+          enter='transition-opacity duration-150 easy-in-out'
           enterFrom='opacity-0'
           enterTo='opacity-100'
-          leave='transition-opacity duration-150'
+          leave='transition-opacity duration-300 easy-in-out'
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
-          className='col-span-6'
+          className='container bg-base drop-shadow px-4 mb-4 pb-4 rounded-b-lg'
         >
           <SearchBar />
         </Transition>
-      </div>
     </>
   );
 }
