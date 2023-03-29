@@ -7,6 +7,7 @@ import fetchWeather from '../utils/fetchWeather';
 
 const WeatherProvider: React.FC<Props> = ({ children }) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [searchDisplay, setSearchDisplay] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const { searchQuery, setSearchQuery, handleSearchSubmit } = useSearch();
   const { coordinates, error, setError } = useGeolocation();
@@ -14,6 +15,7 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     if (!coordinates) {
       setIsLoading(false);
+      setSearchDisplay(true);
       return;
     }
 
@@ -24,6 +26,7 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
         const data = await fetchWeather(latitude, longitude);
         setWeatherData(data);
         setError(null);
+        setSearchDisplay(false);
       } catch (err: any) {
         setError(err);
       } finally {
@@ -45,6 +48,8 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
       fetchWeather,
       setWeatherData,
       setError,
+      searchDisplay,
+      setSearchDisplay,
     }),
     [
       weatherData,
@@ -56,6 +61,8 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
       fetchWeather,
       setWeatherData,
       setError,
+      searchDisplay,
+      setSearchDisplay,
     ]
   );
 

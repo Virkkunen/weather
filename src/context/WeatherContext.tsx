@@ -11,6 +11,8 @@ const WeatherContext = createContext<WeatherContextType>({
   fetchWeather: (lat: number | null, lon: number | null, query: string | undefined) => {},
   setWeatherData: (data: WeatherData) => {},
   setError: (err: any) => {},
+  searchDisplay: false,
+  setSearchDisplay: () => {},
 });
 
 export default WeatherContext;

@@ -8,6 +8,8 @@ export type WeatherContextType = {
   fetchWeather: (lat: number | null, lon: number | null, query: string | undefined) => void;
   setWeatherData: (data: WeatherData) => void;
   setError: (err: any) => void;
+  searchDisplay: boolean;
+  setSearchDisplay: (arg0: boolean) => void;
 };
 
 export interface WeatherData {
