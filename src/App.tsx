@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import Loading from './components/Loading';
 import WeatherDisplay from './components/WeatherDisplay';
@@ -11,6 +12,7 @@ function App() {
       {isLoading && <Loading />}
       <Header />
       {weatherData && <WeatherDisplay />}
+      <Footer />
     </div>
   );
 }
