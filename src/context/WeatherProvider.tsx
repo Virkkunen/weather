@@ -50,6 +50,7 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
       setError,
       searchDisplay,
       setSearchDisplay,
+      setIsLoading,
     }),
     [
       weatherData,
@@ -63,6 +64,7 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
       setError,
       searchDisplay,
       setSearchDisplay,
+      setIsLoading,
     ]
   );
 

@@ -1,5 +1,3 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
-import WeatherContext from '../context/WeatherContext';
 import { ApiError, WeatherData } from '../types/types';
 
 const fetchWeather = async (lat: number | null, lon: number | null, query?: string): Promise<WeatherData> => {
