@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import WeatherContext from "../context/WeatherContext";
 
 interface Coordinates {
   latitude: number;
@@ -7,6 +8,7 @@ interface Coordinates {
 
 export const useGeolocation = () => {
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
+  const [error, setError] = useState<any | null>(null);
 
   useEffect(() => {
     if (!navigator.geolocation) return;
@@ -14,12 +16,16 @@ export const useGeolocation = () => {
     const handleSuccess = (pos: GeolocationPosition) => {
       const { latitude, longitude } = pos.coords;
       setCoordinates({ latitude, longitude });
+      setError(null);
     };
 
-    const handleError = (err: GeolocationPositionError) => console.error(err);
+    const handleError = (err: GeolocationPositionError) => {
+      console.error(err.message);
+      setError(err);
+    }
 
     navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
   }, []);
 
-  return { coordinates };
+  return { coordinates, error, setError };
 };

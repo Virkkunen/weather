@@ -10,6 +10,7 @@ const WeatherContext = createContext<WeatherContextType>({
   handleSearchSubmit: (e?: React.FormEvent<HTMLFormElement>) => {},
   fetchWeather: (lat: number | null, lon: number | null, query: string | undefined) => {},
   setWeatherData: (data: WeatherData) => {},
+  setError: (err: any) => {},
 });
 
 export default WeatherContext;
