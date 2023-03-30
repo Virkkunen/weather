@@ -4,9 +4,13 @@ import PreferencesContext from './PreferencesContext';
 
 const PreferencesProvider: React.FC<Props> = ({ children }) => {
   const [prefs, setPrefs] = useState<PrefsData | null>(null);
+  const [prefsOpen, setPrefsOpen] = useState(false);
 
   const getPreferences = () => {
-    if (!localStorage.prefs) return;
+    if (!localStorage.prefs) {
+      const newPrefs = {units: 'metric', apiKey: ''};
+      localStorage.setItem('prefs', JSON.stringify(newPrefs));
+    };
     setPrefs(JSON.parse(localStorage.prefs));
   };
 
@@ -16,8 +20,10 @@ const PreferencesProvider: React.FC<Props> = ({ children }) => {
     () => ({
       prefs,
       setPrefs,
+      prefsOpen,
+      setPrefsOpen,
     }),
-    [prefs, setPrefs]
+    [prefs, setPrefs, prefsOpen, setPrefsOpen]
   );
 
   return (

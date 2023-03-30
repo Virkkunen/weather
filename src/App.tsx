@@ -4,6 +4,7 @@ import ErrorBox from './components/ErrorBox';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Loading from './components/Loading';
+import PrefsBox from './components/PrefsBox';
 import { SearchBar } from './components/SearchBar';
 import SkeletonDisplay from './components/SkeletonDisplay';
 import WeatherDisplay from './components/WeatherDisplay';
@@ -17,6 +18,7 @@ function App() {
     <div className='md:grid md:grid-cols-1 md:grid-rows-3 md:items-center md:h-screen md:max-w-4xl md:mx-auto'>
       {isLoading && <Loading />}
       <ErrorBox />
+      <PrefsBox />
       <div className='transition ease-in-out duration-200'>
         <Header />
         <Transition

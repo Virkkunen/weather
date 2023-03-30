@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import WeatherContext from '../context/WeatherContext';
 import { FaSearch, FaCog } from 'react-icons/fa';
+import PreferencesContext from '../context/PreferencesContext';
 
 export default function Header() {
   const { weatherData, searchDisplay, setSearchDisplay, searchLoading } =
     useContext(WeatherContext);
-
-  const handleClick = () => setSearchDisplay(!searchDisplay);
+  const { prefsOpen, setPrefsOpen } = useContext(PreferencesContext);
 
   return (
     <div
@@ -16,7 +16,7 @@ export default function Header() {
       <button
         type='button'
         className='m-auto col-start-1 col-span-1 hover:text-lavender active:text-opacity-60 ease-in-out duration-200'
-        onClick={handleClick}
+        onClick={() => setSearchDisplay(!searchDisplay)}
       >
         <FaSearch size='20px' />
       </button>
@@ -27,6 +27,7 @@ export default function Header() {
       <button
         type='button'
         className='m-auto col-start-6 col-span-1 hover:text-green active:text-opacity-60 ease-in-out duration-200'
+        onClick={() => setPrefsOpen(!prefsOpen)}
       >
         <FaCog size='20px' />
       </button>

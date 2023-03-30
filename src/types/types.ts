@@ -117,4 +117,6 @@ export interface PrefsData {
 export type PreferencesContextType = {
   prefs: PrefsData | null;
   setPrefs: (pref: any | null) => void;
+  prefsOpen: boolean;
+  setPrefsOpen: (arg0: boolean) => void;
 }

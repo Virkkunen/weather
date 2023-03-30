@@ -5,8 +5,6 @@ import ErrorContext from '../context/ErrorContext';
 const ErrorBox = () => {
   const { error, setError, errorMap } = useContext(ErrorContext);
 
-  const handleClick = () => setError(null);
-
   return (
     <Transition
       show={Boolean(error)}
@@ -48,7 +46,7 @@ const ErrorBox = () => {
               <button
                 type='button'
                 className='font-bold text-maroon mt-4 hover:text-red active:text-opacity-60 ease-in-out duration-200'
-                onClick={handleClick}
+                onClick={() => setError(null)}
               >
                 Close
               </button>
