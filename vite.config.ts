@@ -7,4 +7,8 @@ import { ghPages } from 'vite-plugin-gh-pages';
 export default defineConfig({
   plugins: [react(), ghPages()],
   base: '/weather/',
+  publicDir: 'public',
+  build: {
+    manifest: true,
+  },
 })
