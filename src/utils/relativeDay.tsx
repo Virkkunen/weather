@@ -1,10 +1,10 @@
 const relativeDay = (date: string) => {
-  const today = new Date();
+  const today = new Date().toISOString().substring(0, 10);
   const dateApi = new Date(date);
 
-  if (dateApi.toDateString() === today.toDateString()) return 'Today';
+  if (date === today) return 'Today';
 
-  return dateApi.toLocaleString('en-UK', { weekday: 'long' });
+  return dateApi.toLocaleString('en-US', { weekday: 'long' });
 };
 
 export default relativeDay;
