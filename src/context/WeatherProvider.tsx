@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from 'react';
+import React, { useState, useEffect, useContext, useMemo, useCallback } from 'react';
 import WeatherContext from './WeatherContext';
 import { WeatherData, Props } from '../types/types';
 import { useSearch } from '../hooks/useSearch';
@@ -29,7 +29,7 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
 
     const handleError = (err: GeolocationPositionError) => {
       setError(err);
-    }
+    };
 
     navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
   }, []);

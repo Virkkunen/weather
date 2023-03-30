@@ -1,23 +1,23 @@
 import { Dialog, Switch, Transition } from '@headlessui/react';
-import { useContext, Fragment } from 'react';
+import { useContext, Fragment, useCallback } from 'react';
 import PreferencesContext from '../context/PreferencesContext';
 
 const PrefsBox = () => {
   const { prefsOpen, setPrefsOpen, prefs, setPrefs, savePreferences } = useContext(PreferencesContext);
   const switchSide = prefs?.units !== 'metric';
 
-  const handleSwitchChange = () => {
+  const handleSwitchChange = useCallback(() => {
     const newPrefs = {
       ...prefs,
       units: `${prefs?.units === 'metric' ? 'imperial' : 'metric'}`,
     };
     setPrefs(newPrefs);
-  };
+  }, [prefs]);
 
-  const handleSave = () => {
+  const handleSave = useCallback(() => {
     savePreferences();
     setPrefsOpen(false);
-  };
+  }, []);
 
   return (
     <Transition show={prefsOpen} as={Fragment}>
