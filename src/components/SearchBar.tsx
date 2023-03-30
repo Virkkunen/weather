@@ -5,7 +5,7 @@ export const SearchBar = () => {
   const { searchQuery, handleSearchSubmit, handleSearchChange } = useSearch();
 
   return (
-    <form onSubmit={handleSearchSubmit}>
+    <form onSubmit={handleSearchSubmit} className='flex gap-4'>
       <input
         type='text'
         placeholder='Search for a city...'
@@ -14,6 +14,10 @@ export const SearchBar = () => {
         onChange={handleSearchChange}
         autoFocus
       />
+      <button
+        type='submit'
+        className='rounded-lg bg-blue text-mantle py-1 px-3 text-sm font-medium hover:bg-lavender active:bg-opacity-60 transition ease-in-out duration-200'
+      >Search</button>
     </form>
   );
 };
