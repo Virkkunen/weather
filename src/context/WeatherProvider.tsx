@@ -7,24 +7,46 @@ import fetchWeather from '../utils/fetchWeather';
 
 const WeatherProvider: React.FC<Props> = ({ children }) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [error, setError] = useState<any | null>(null);
   const [searchDisplay, setSearchDisplay] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [searchLoading, setSearchLoading] = useState(false);
-  const { searchQuery, setSearchQuery, handleSearchSubmit } = useSearch();
-  const { coordinates, error, setError } = useGeolocation();
+  const { handleSearchSubmit } = useSearch();
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
-    if (!coordinates) {
+    if (!navigator.geolocation) return;
+
+    const handleSuccess = (pos: GeolocationPosition) => {
+      const { latitude, longitude } = pos.coords;
+      const lat = latitude.toFixed(2);
+      const lon = longitude.toFixed(2);
+      const queryCoords = `${lat},${lon}`;
+      setQuery(queryCoords);
+      setError(null);
+    };
+
+    const handleError = (err: GeolocationPositionError) => {
+      console.error(err);
+      setError(err);
+    }
+
+    navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
+  }, []);
+
+  useEffect(() => {
+    if (!query) {
       setIsLoading(false);
       setSearchDisplay(true);
+      console.log('!query')
       return;
     }
 
-    const { latitude, longitude } = coordinates;
     const fetchWeatherData = async () => {
       try {
         setIsLoading(true);
-        const data = await fetchWeather(latitude, longitude);
+        console.log(`query on try fetch ${query}`)
+        const data = await fetchWeather(query);
         setWeatherData(data);
         setError(null);
         setSearchDisplay(false);
@@ -36,15 +58,15 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
     };
 
     fetchWeatherData();
-  }, [coordinates]);
+
+    
+  }, [query]);
 
   const value = useMemo(
     () => ({
       weatherData,
       error,
       isLoading,
-      searchQuery,
-      setSearchQuery,
       handleSearchSubmit,
       fetchWeather,
       setWeatherData,
@@ -52,14 +74,14 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
       searchDisplay,
       setSearchDisplay,
       searchLoading,
-      setSearchLoading,      
+      setSearchLoading,
+      query,
+      setQuery,
     }),
     [
       weatherData,
       error,
       isLoading,
-      searchQuery,
-      setSearchQuery,
       handleSearchSubmit,
       fetchWeather,
       setWeatherData,
@@ -67,7 +89,9 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
       searchDisplay,
       setSearchDisplay,
       searchLoading,
-      setSearchLoading, 
+      setSearchLoading,
+      query,
+      setQuery,
     ]
   );
 

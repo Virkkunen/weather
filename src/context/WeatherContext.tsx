@@ -4,17 +4,17 @@ import { WeatherContextType, WeatherData } from '../types/types';
 const WeatherContext = createContext<WeatherContextType>({
   weatherData: null,
   error: null,
-  isLoading: false,
-  searchQuery: null,
-  setSearchQuery: (query: string) => {},
+  isLoading: true,
   handleSearchSubmit: (e?: React.FormEvent<HTMLFormElement>) => {},
-  fetchWeather: (lat: number | null, lon: number | null, query: string | undefined) => {},
+  fetchWeather: (query: string | null) => {},
   setWeatherData: (data: WeatherData) => {},
   setError: (err: any) => {},
   searchDisplay: false,
   setSearchDisplay: () => {},
   setSearchLoading: () => {},
   searchLoading: false,
+  query: null,
+  setQuery: (query: string) => {},
 });
 
 export default WeatherContext;

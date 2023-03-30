@@ -1,21 +1,19 @@
 import { useState, useEffect, useContext } from "react";
 import WeatherContext from "../context/WeatherContext";
 
-interface Coordinates {
-  latitude: number;
-  longitude: number;
-}
-
 export const useGeolocation = () => {
-  const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
   const [error, setError] = useState<any | null>(null);
+  const { setQuery } = useContext(WeatherContext);
 
   useEffect(() => {
     if (!navigator.geolocation) return;
 
     const handleSuccess = (pos: GeolocationPosition) => {
       const { latitude, longitude } = pos.coords;
-      setCoordinates({ latitude, longitude });
+      const lat = latitude.toFixed(2);
+      const lon = longitude.toFixed(2);
+      const queryCoords = `${lat},${lon}`;
+      setQuery(queryCoords);
       setError(null);
     };
 
@@ -27,5 +25,5 @@ export const useGeolocation = () => {
     navigator.geolocation.getCurrentPosition(handleSuccess, handleError);
   }, []);
 
-  return { coordinates, error, setError };
+  return { error, setError };
 };
