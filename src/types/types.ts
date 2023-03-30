@@ -109,3 +109,8 @@ export type ErrorContextType = {
   setError: (err: any | null) => void;
   errorMap: ErrorData;
 }
+
+export type PreferencesContextType = {
+  prefs: any | null;
+  setPrefs: (pref: any | null) => void;
+}

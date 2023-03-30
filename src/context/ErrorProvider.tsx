@@ -8,7 +8,7 @@ const ErrorProvider: React.FC<Props> = ({ children }) => {
   const errorMap: ErrorData = {
     1: 'User denied geolocation prompt.',
     400: 'City not found.',
-    404: 'City not found.'
+    404: 'City not found.',
   };
 
   const value = useMemo(
