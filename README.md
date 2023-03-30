@@ -1,8 +1,8 @@
 
 # Weather
 
-A simple weather app made with React and TypeScript, generated using Vite.
-All data provided by [Weather API](https://www.weatherapi.com).
+A simple responsive weather app made with React and TypeScript, generated using Vite.
+All weather data provided by [Weather API](https://www.weatherapi.com).
 
 
 ## Features
@@ -13,6 +13,7 @@ All data provided by [Weather API](https://www.weatherapi.com).
 - Search for cities around the world
 - Metric and Imperial units
 - Able to provide your own [Weather API key](https://www.weatherapi.com)
+- Responsive layout
 
 
 ## Screenshots
@@ -79,3 +80,4 @@ React, TypeScript, Vite, TailwindCSS, Headless UI, RESTful API
     - user: { unit: metric, apiKey: 1w2e3r4t5y }
 - [ ] Pin header on mobile layouts
 - [ ] Fix content under footer
+- [ ] Fix forecast showing wrong dates
