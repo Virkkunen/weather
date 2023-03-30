@@ -2,6 +2,7 @@ import { Transition } from '@headlessui/react';
 import { useContext } from 'react';
 import ErrorBox from './components/ErrorBox';
 import Footer from './components/Footer';
+import ForecastDisplay from './components/ForecastDisplay';
 import Header from './components/Header';
 import Loading from './components/Loading';
 import PrefsBox from './components/PrefsBox';
@@ -58,7 +59,7 @@ function App() {
           leaveTo='opacity-0'
           className='md:flex-auto'
         >
-          {weatherData && !searchLoading && <SkeletonDisplay />}
+          {weatherData && !searchLoading && <ForecastDisplay />}
           {searchLoading && <SkeletonDisplay />}
         </Transition>
       </div>
