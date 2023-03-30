@@ -1,8 +1,12 @@
-import React from 'react';
+import { useContext } from 'react';
+import WeatherContext from '../context/WeatherContext';
 
 const SkeletonDisplay = () => {
+  const { weatherData } = useContext(WeatherContext);
+  const { current } = weatherData!;
+
   return (
-    <div className='m-4 p-8 rounded-lg bg-surface0 flex flex-col place-content-center drop-shadow hover:drop-shadow-lg md:max-w-md md:mx-auto'>
+    <div className={`m-4 p-8 rounded-lg ${current.is_day ? `bg-surface0` : `bg-mantle`} flex flex-col place-content-center drop-shadow hover:drop-shadow-lg md:max-w-md md:mx-auto`}>
       <div className='flex flex-col relative animate-pulse mb-3'>
         <div className='h-12 w-20 bg-overlay0 mb-6 rounded-md' />
         <div className='h-3 w-48 bg-overlay0 rounded-md' />

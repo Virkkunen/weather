@@ -11,7 +11,7 @@ export default function Header() {
   return (
     <div
       className={`container grid grid-flow-col grid-cols-6 grid-rows-1 mx-auto p-8 ${!searchDisplay && `rounded-b-lg`} 
-      bg-base shadow-md ease-in-out duration-200 md:rounded-t-lg ${!searchDisplay && `md:rounded-lg`} md:flex md:flex-row md:justify-evenly md:p-4 md:w-1/2 md:mx-auto md:row-start-1 md:shadow-lg`}
+      bg-crust shadow-md ease-in-out duration-200 md:rounded-t-lg ${!searchDisplay && `md:rounded-lg`} md:flex md:flex-row md:justify-evenly md:p-4 md:w-1/2 md:mx-auto md:row-start-1 md:shadow-lg`}
     >
       <button
         type='button'

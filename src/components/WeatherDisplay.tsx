@@ -9,7 +9,7 @@ export default function WeatherDisplay() {
   const windDirection = windDegreeToDirection(current.wind_degree);
 
   return (
-    <div className='m-4 p-8 rounded-lg bg-surface0 flex flex-col place-content-center drop-shadow hover:drop-shadow-lg md:max-w-md md:mx-auto'>
+    <div className={`m-4 p-8 rounded-lg ${current.is_day ? `bg-surface0` : `bg-mantle`} flex flex-col place-content-center drop-shadow hover:drop-shadow-lg md:max-w-md md:mx-auto`}>
       <div className='flex flex-col mb-4 relative'>
         <span className='text-6xl font-mono mb-2'>{current.temp_c.toFixed(0)}°</span>
         <span className='text-sm text-subtext1'>
