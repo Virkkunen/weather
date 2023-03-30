@@ -11,6 +11,8 @@ All data provided by [Weather API](https://www.weatherapi.com).
 - 3 day forecast
 - Automatically sets your location (if consented)
 - Search for cities around the world
+- Metric and Imperial units
+- Able to provide your own [Weather API key](https://www.weatherapi.com)
 
 
 ## Screenshots
@@ -67,3 +69,12 @@ VITE_WEATHER_API_KEY=YOUR_API_KEY_HERE
 
 React, TypeScript, Vite, TailwindCSS, Headless UI, RESTful API
 
+
+## To Do
+- [ ] Forecast card
+- [ ] Settings flyout
+  - [ ] metric/imperial units
+  - [ ] api key
+  - [ ] save/retrive from local storage
+    - user: { unit: metric, apiKey: 1w2e3r4t5y }
+- [ ] More relevant information on Weather card
