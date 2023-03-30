@@ -17,7 +17,8 @@ All data provided by [Weather API](https://www.weatherapi.com).
 
 ## Screenshots
 
-TODO
+![desktop](./assets/desktop.png)
+![mobile](./assets/mobile.png)
 
 
 ## Demo
@@ -76,4 +77,5 @@ React, TypeScript, Vite, TailwindCSS, Headless UI, RESTful API
   - [ ] api key
   - [x] save/retrive from local storage
     - user: { unit: metric, apiKey: 1w2e3r4t5y }
-- [ ] More relevant information on Weather card
+- [ ] Pin header on mobile layouts
+- [ ] Fix content under footer
