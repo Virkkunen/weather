@@ -1,11 +1,11 @@
+import { useContext } from 'react';
+import WeatherContext from '../context/WeatherContext';
 import { ApiError, WeatherData } from '../types/types';
 
-const fetchWeather = async (lat: number | null, lon: number | null, query?: string): Promise<WeatherData> => {
-  const apiKey = import.meta.env.VITE_OPENWEATHERMAP_API_KEY;
-  const apiUrl = lat && lon 
-      ? `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
-      : `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${apiKey}&units=metric`;
-  
+const fetchWeather = async (query: string | null): Promise<WeatherData> => {
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+  const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${query}&days=3&aqi=no&alerts=no`
+  console.log(apiUrl)
   try {
     const response = await fetch(apiUrl);
 
@@ -16,8 +16,8 @@ const fetchWeather = async (lat: number | null, lon: number | null, query?: stri
       apiError.response = response;
       throw apiError;
     }
-
     const data = await response.json();
+    data.forecast.forecastday.forEach((day: any) => delete day.hour);
     return data;
   } catch (err: any) {
     throw err;

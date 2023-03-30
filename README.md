@@ -2,12 +2,17 @@
 # Weather
 
 A simple weather app made with React and TypeScript, generated using Vite.
-All data provided by [OpenWeatherMap](https://openweathermap.org).
+All data provided by [Weather API](https://www.weatherapi.com).
 
 
 ## Features
 
-- TODO
+- Current weather
+- 3 day forecast
+- Automatically sets your location (if consented)
+- Search for cities around the world
+- Metric and Imperial units
+- Able to provide your own [Weather API key](https://www.weatherapi.com)
 
 
 ## Screenshots
@@ -40,16 +45,19 @@ TODO
   npm i
 ```
 
+- Create the `.env` file on the root of the project and add your [Weather API key](https://www.weatherapi.com)
+```bash
+VITE_WEATHER_API_KEY=YOUR_API_KEY_HERE
+```
+
 - Start the server
 
 ```bash
   npm run dev
 ```
 
-- Create the `.env` file on the root of the project and add your [OpenWeatherMap API key](https://home.openweathermap.org/api_keys)
-```bash
-VITE_OPENWEATHERMAP_API_KEY=YOUR_API_KEY_HERE
-```
+- The server will be running locally on `localhost:5173/weather/`
+
 
 
 ## Authors
@@ -59,5 +67,14 @@ VITE_OPENWEATHERMAP_API_KEY=YOUR_API_KEY_HERE
 
 ## Tech Stack
 
-React, React hooks, TailwindCSS, TypeScript, RESTful API, Vite
+React, TypeScript, Vite, TailwindCSS, Headless UI, RESTful API
 
+
+## To Do
+- [ ] Forecast card
+- [ ] Settings flyout
+  - [ ] metric/imperial units
+  - [ ] api key
+  - [ ] save/retrive from local storage
+    - user: { unit: metric, apiKey: 1w2e3r4t5y }
+- [ ] More relevant information on Weather card
