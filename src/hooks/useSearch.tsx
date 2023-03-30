@@ -22,7 +22,7 @@ export const useSearch = (): SearchState => {
       e.preventDefault();
       try {
         setSearchLoading(true);
-        const data = await fetchWeather(null, null, searchQuery);
+        const data = await fetchWeather(searchQuery.toLowerCase().replace(/ /g, '_'));
         setWeatherData(data!);
         setError(null);
         setSearchDisplay(false);

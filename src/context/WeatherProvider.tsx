@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import WeatherContext from './WeatherContext';
 import { WeatherData, Props } from '../types/types';
 import { useSearch } from '../hooks/useSearch';
-import { useGeolocation } from '../hooks/useGeolocation';
 import fetchWeather from '../utils/fetchWeather';
 
 const WeatherProvider: React.FC<Props> = ({ children }) => {
@@ -38,7 +37,6 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
     if (!query) {
       setIsLoading(false);
       setSearchDisplay(true);
-      console.log('!query')
       return;
     }
 

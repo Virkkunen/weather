@@ -13,7 +13,7 @@ export default function WeatherDisplay() {
       <div className='flex flex-col mb-4 relative'>
         <span className='text-6xl font-mono mb-2'>{current.temp_c.toFixed(0)}°</span>
         <span className='text-sm text-subtext1'>
-          {current.condition.text}, feels like {current.feelslike_c.toFixed(0)}°
+          {current.condition.text.toLowerCase()}, feels like {current.feelslike_c.toFixed(0)}°
         </span>
         <img
           src={current.condition.icon}

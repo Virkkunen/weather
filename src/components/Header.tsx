@@ -21,7 +21,7 @@ export default function Header() {
         <FaSearch size='20px' />
       </button>
       <span className='text-xl text-center my-auto col-start-2 col-span-4'>
-        {weatherData && !searchLoading && weatherData.name}
+        {weatherData && !searchLoading && weatherData.location.name}
         {searchLoading && 'Finding city...'}
       </span>
       <button
