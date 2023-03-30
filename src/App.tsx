@@ -26,7 +26,7 @@ function App() {
           leave='transition duration-150 easy-in'
           leaveFrom='transform translate-y-0 opacity-100 '
           leaveTo='opacity-0 transform -translate-y-2'
-          className={`bg-base drop-shadow px-4 mb-4 pb-4 rounded-b-lg mx-auto md:rounded-b-lg md:p-2 md:my-0 md:flex md:justify-center md:w-1/2 md:row-start-1`}
+          className={`bg-crust drop-shadow px-4 mb-4 pb-4 rounded-b-lg mx-auto md:rounded-b-lg md:p-2 md:my-0 md:flex md:justify-center md:w-1/2 md:row-start-1`}
         >
           <SearchBar />
         </Transition>
