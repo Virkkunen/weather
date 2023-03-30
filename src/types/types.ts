@@ -110,7 +110,11 @@ export type ErrorContextType = {
   errorMap: ErrorData;
 }
 
+export interface PrefsData {
+  [key: string]: string;
+}
+
 export type PreferencesContextType = {
-  prefs: any | null;
+  prefs: PrefsData | null;
   setPrefs: (pref: any | null) => void;
 }

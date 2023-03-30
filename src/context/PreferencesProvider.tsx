@@ -1,9 +1,16 @@
-import React, { useState, useMemo } from 'react';
-import { Props } from '../types/types';
+import React, { useState, useMemo, useEffect } from 'react';
+import { PrefsData, Props } from '../types/types';
 import PreferencesContext from './PreferencesContext';
 
 const PreferencesProvider: React.FC<Props> = ({ children }) => {
-  const [prefs, setPrefs] = useState<any | null>(null);
+  const [prefs, setPrefs] = useState<PrefsData | null>(null);
+
+  const getPreferences = () => {
+    if (!localStorage.prefs) return;
+    setPrefs(JSON.parse(localStorage.prefs));
+  };
+
+  useEffect(() => getPreferences(), []);
 
   const value = useMemo(
     () => ({
