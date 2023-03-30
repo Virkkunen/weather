@@ -71,10 +71,9 @@ React, TypeScript, Vite, TailwindCSS, Headless UI, RESTful API
 
 
 ## To Do
-- [ ] Forecast card
 - [ ] Settings flyout
-  - [ ] metric/imperial units
+  - [x] metric/imperial units
   - [ ] api key
-  - [ ] save/retrive from local storage
+  - [x] save/retrive from local storage
     - user: { unit: metric, apiKey: 1w2e3r4t5y }
 - [ ] More relevant information on Weather card
