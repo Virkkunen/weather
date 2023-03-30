@@ -81,3 +81,4 @@ React, TypeScript, Vite, TailwindCSS, Headless UI, RESTful API
 - [ ] Pin header on mobile layouts
 - [ ] Fix content under footer
 - [ ] Fix forecast showing wrong dates
+  - https://date-fns.org/docs/Getting-Started
