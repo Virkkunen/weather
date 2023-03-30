@@ -17,8 +17,8 @@ function App() {
   return (
     <div className='md:grid md:grid-cols-1 md:grid-rows-3 md:items-center md:h-screen md:max-w-4xl md:mx-auto'>
       {isLoading && <Loading />}
-      <ErrorBox />
       <PrefsBox />
+      <ErrorBox />
       <div className='transition ease-in-out duration-200'>
         <Header />
         <Transition

@@ -3,10 +3,16 @@ import { useContext, Fragment } from 'react';
 import PreferencesContext from '../context/PreferencesContext';
 
 const PrefsBox = () => {
-  const { prefsOpen, setPrefsOpen, prefs, setPrefs } =
-    useContext(PreferencesContext);
+  const { prefsOpen, setPrefsOpen, prefs, setPrefs } = useContext(PreferencesContext);
   const switchSide = prefs?.units !== 'metric';
-  console.log(switchSide);
+
+  const handleSwitchChange = () => {
+    const newPrefs = {
+      ...prefs,
+      units: `${prefs?.units === 'metric' ? 'imperial' : 'metric'}`,
+    };
+    setPrefs(newPrefs);
+  };
 
   return (
     <Transition show={prefsOpen} as={Fragment}>
@@ -39,14 +45,14 @@ const PrefsBox = () => {
               <Dialog.Title className='font-bold text-lg mb-4 text-center'>
                 Preferences
               </Dialog.Title>
-              <Dialog.Description>
+              <Dialog.Description as='div'>
                 <div className='flex mx-auto my-auto items-center'>
                   <span className='mr-2'>Metric</span>
                   <Switch
                     checked={switchSide}
-                    onChange={() => console.log('change')}
+                    onChange={handleSwitchChange}
                     className={`${
-                      switchSide ? 'bg-green' : 'bg-blue'
+                      switchSide ? 'bg-blue' : 'bg-green'
                     } relative inline-flex h-4 w-11 items-center rounded-full`}
                   >
                     <span
