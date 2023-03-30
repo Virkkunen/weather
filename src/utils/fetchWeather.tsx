@@ -5,7 +5,6 @@ import { ApiError, WeatherData } from '../types/types';
 const fetchWeather = async (query: string | null): Promise<WeatherData> => {
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
   const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${query}&days=3&aqi=no&alerts=no`
-  console.log(apiUrl)
   try {
     const response = await fetch(apiUrl);
 
