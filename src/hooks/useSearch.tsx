@@ -1,4 +1,5 @@
 import { useCallback, useContext, useState } from 'react';
+import ErrorContext from '../context/ErrorContext';
 import WeatherContext from '../context/WeatherContext';
 
 interface SearchState {
@@ -10,7 +11,8 @@ interface SearchState {
 
 export const useSearch = (): SearchState => {
   const [searchQuery, setSearchQuery] = useState('');
-  const { fetchWeather, setWeatherData, setError, setSearchDisplay, setSearchLoading } = useContext(WeatherContext);
+  const { fetchWeather, setWeatherData, setSearchDisplay, setSearchLoading } = useContext(WeatherContext);
+  const { error, setError } = useContext(ErrorContext);
 
   const handleSearchChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value),
@@ -27,7 +29,7 @@ export const useSearch = (): SearchState => {
         setError(null);
         setSearchDisplay(false);
       } catch (err: any) {
-        setError({ code: 404, message: err });
+        setError(err.response);
       } finally {
         setSearchQuery('');
         setSearchLoading(false);

@@ -1,18 +1,9 @@
 import { useContext, Fragment } from 'react';
-import WeatherContext from '../context/WeatherContext';
 import { Dialog, Transition } from '@headlessui/react';
+import ErrorContext from '../context/ErrorContext';
 
 const ErrorBox = () => {
-  const { error, setError } = useContext(WeatherContext);
-
-  interface ErrorMap {
-    [key: string]: string;
-  }
-
-  const errorMap: ErrorMap = {
-    1: `User denied location prompt. Please manually select a location.`,
-    404: `City not found.`,
-  };
+  const { error, setError, errorMap } = useContext(ErrorContext);
 
   const handleClick = () => setError(null);
 
@@ -47,12 +38,12 @@ const ErrorBox = () => {
           leaveTo='opacity-0 scale-95'
         >
           <div className='fixed inset-0 flex items-center justify-center p-4 drop-shadow hover:drop-shadow-lg'>
-            <Dialog.Panel className='w-full max-w-sm rounded-md bg-base p-8'>
+            <Dialog.Panel className='w-full max-w-sm rounded-md bg-mantle p-8'>
               <Dialog.Title className='font-bold text-lg mb-2'>
                 Error
               </Dialog.Title>
               <Dialog.Description>
-                {error && errorMap[error.code]}
+                {error && errorMap[error.code || error.status]}
               </Dialog.Description>
               <button
                 type='button'

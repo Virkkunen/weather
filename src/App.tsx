@@ -10,8 +10,9 @@ import WeatherDisplay from './components/WeatherDisplay';
 import WeatherContext from './context/WeatherContext';
 
 function App() {
-  const { isLoading, weatherData, error, searchLoading, searchDisplay } =
+  const { isLoading, weatherData, searchLoading, searchDisplay } =
     useContext(WeatherContext);
+ 
   return (
     <div className='md:grid md:grid-cols-1 md:grid-rows-3 md:items-center md:h-screen md:max-w-4xl md:mx-auto'>
       {isLoading && <Loading />}

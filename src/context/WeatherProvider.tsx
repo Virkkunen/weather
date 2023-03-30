@@ -1,17 +1,19 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useContext, useMemo } from 'react';
 import WeatherContext from './WeatherContext';
 import { WeatherData, Props } from '../types/types';
 import { useSearch } from '../hooks/useSearch';
 import fetchWeather from '../utils/fetchWeather';
+import ErrorContext from './ErrorContext';
 
 const WeatherProvider: React.FC<Props> = ({ children }) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [error, setError] = useState<any | null>(null);
   const [searchDisplay, setSearchDisplay] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [searchLoading, setSearchLoading] = useState(false);
+
   const { handleSearchSubmit } = useSearch();
   const [query, setQuery] = useState('');
+  const {error, setError} = useContext(ErrorContext);
 
   useEffect(() => {
     if (!navigator.geolocation) return;
@@ -26,7 +28,6 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
     };
 
     const handleError = (err: GeolocationPositionError) => {
-      console.error(err);
       setError(err);
     }
 
@@ -43,7 +44,6 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
     const fetchWeatherData = async () => {
       try {
         setIsLoading(true);
-        console.log(`query on try fetch ${query}`)
         const data = await fetchWeather(query);
         setWeatherData(data);
         setError(null);
@@ -63,12 +63,10 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
   const value = useMemo(
     () => ({
       weatherData,
-      error,
       isLoading,
       handleSearchSubmit,
       fetchWeather,
       setWeatherData,
-      setError,
       searchDisplay,
       setSearchDisplay,
       searchLoading,
@@ -78,12 +76,10 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
     }),
     [
       weatherData,
-      error,
       isLoading,
       handleSearchSubmit,
       fetchWeather,
       setWeatherData,
-      setError,
       searchDisplay,
       setSearchDisplay,
       searchLoading,

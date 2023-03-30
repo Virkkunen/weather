@@ -1,11 +1,9 @@
 export type WeatherContextType = {
   weatherData: WeatherData | null;
-  error: any | null;
   isLoading: boolean;
   handleSearchSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   fetchWeather: (query: string | null) => void;
   setWeatherData: (data: WeatherData) => void;
-  setError: (err: any) => void;
   searchDisplay: boolean;
   setSearchDisplay: (arg0: boolean) => void;
   searchLoading: boolean;
@@ -100,4 +98,14 @@ export interface Props {
 
 export interface ApiError extends Error {
   response?: Response;
+}
+
+export interface ErrorData {
+  [key: number]: string;
+}
+
+export type ErrorContextType = {
+  error: any | null;
+  setError: (err: any | null) => void;
+  errorMap: ErrorData;
 }
