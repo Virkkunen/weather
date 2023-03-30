@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import ForecastDisplay from './components/ForecastDisplay';
 import Header from './components/Header';
 import Loading from './components/Loading';
+import MiscCard from './components/MiscCard';
 import PrefsBox from './components/PrefsBox';
 import { SearchBar } from './components/SearchBar';
 import SkeletonDisplay from './components/SkeletonDisplay';
@@ -14,7 +15,7 @@ import WeatherContext from './context/WeatherContext';
 function App() {
   const { isLoading, weatherData, searchLoading, searchDisplay } =
     useContext(WeatherContext);
- 
+
   return (
     <div className='md:grid md:grid-cols-1 md:grid-rows-3 md:items-center md:h-screen md:max-w-4xl md:mx-auto'>
       {isLoading && <Loading />}
@@ -35,7 +36,35 @@ function App() {
           <SearchBar />
         </Transition>
       </div>
-      <div className='grid grid-cols-1 grid-flow-row place-content-center transition-all ease-in-out duration-300 md:flex md:flex-row md:justify-between md:gap-12 md:row-start-2'>
+      <div className='grid grid-cols-1 grid-flow-row place-content-center transition-all ease-in-out duration-300 md:flex md:flex-col'>
+        <div className='md:flex md:flex-row'>
+          <Transition
+            show={Boolean(weatherData)}
+            enter='transition-opacity duration-75'
+            enterFrom='opacity-0'
+            enterTo='opacity-100'
+            leave='transition-opacity duration-150'
+            leaveFrom='opacity-100'
+            leaveTo='opacity-0'
+            className='md:flex-auto'
+          >
+            {weatherData && !searchLoading && <WeatherDisplay />}
+            {searchLoading && <SkeletonDisplay />}
+          </Transition>
+          <Transition
+            show={Boolean(weatherData)}
+            enter='transition-opacity duration-75'
+            enterFrom='opacity-0'
+            enterTo='opacity-100'
+            leave='transition-opacity duration-150'
+            leaveFrom='opacity-100'
+            leaveTo='opacity-0'
+            className='md:flex-auto'
+          >
+            {weatherData && !searchLoading && <ForecastDisplay />}
+            {searchLoading && <SkeletonDisplay />}
+          </Transition>
+        </div>
         <Transition
           show={Boolean(weatherData)}
           enter='transition-opacity duration-75'
@@ -44,22 +73,9 @@ function App() {
           leave='transition-opacity duration-150'
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
-          className='md:flex-auto'
+          className='md:flex-1'
         >
-          {weatherData && !searchLoading && <WeatherDisplay />}
-          {searchLoading && <SkeletonDisplay />}
-        </Transition>
-        <Transition
-          show={Boolean(weatherData)}
-          enter='transition-opacity duration-75'
-          enterFrom='opacity-0'
-          enterTo='opacity-100'
-          leave='transition-opacity duration-150'
-          leaveFrom='opacity-100'
-          leaveTo='opacity-0'
-          className='md:flex-auto'
-        >
-          {weatherData && !searchLoading && <ForecastDisplay />}
+          {weatherData && !searchLoading && <MiscCard />}
           {searchLoading && <SkeletonDisplay />}
         </Transition>
       </div>

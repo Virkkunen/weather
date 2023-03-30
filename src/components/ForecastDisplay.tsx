@@ -1,9 +1,7 @@
-import React, { useContext } from 'react';
-import { FaArrowUp } from 'react-icons/fa';
+import { useContext } from 'react';
 import PreferencesContext from '../context/PreferencesContext';
 import WeatherContext from '../context/WeatherContext';
 import relativeDay from '../utils/relativeDay';
-import windDegreeToDirection from '../utils/windDegreeToDirection';
 
 export default function ForecastDisplay() {
   const { weatherData } = useContext(WeatherContext);
