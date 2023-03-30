@@ -6,6 +6,7 @@ const PreferencesContext = createContext<PreferencesContextType>({
   setPrefs: (prefs: PrefsData | null) => {},
   prefsOpen: false,
   setPrefsOpen: (arg0: boolean) => {},
+  savePreferences: () => {},
 });
 
 export default PreferencesContext;

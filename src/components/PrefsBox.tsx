@@ -3,7 +3,7 @@ import { useContext, Fragment } from 'react';
 import PreferencesContext from '../context/PreferencesContext';
 
 const PrefsBox = () => {
-  const { prefsOpen, setPrefsOpen, prefs, setPrefs } = useContext(PreferencesContext);
+  const { prefsOpen, setPrefsOpen, prefs, setPrefs, savePreferences } = useContext(PreferencesContext);
   const switchSide = prefs?.units !== 'metric';
 
   const handleSwitchChange = () => {
@@ -12,6 +12,11 @@ const PrefsBox = () => {
       units: `${prefs?.units === 'metric' ? 'imperial' : 'metric'}`,
     };
     setPrefs(newPrefs);
+  };
+
+  const handleSave = () => {
+    savePreferences();
+    setPrefsOpen(false);
   };
 
   return (
@@ -67,7 +72,7 @@ const PrefsBox = () => {
               <button
                 type='button'
                 className='font-bold text-lavender mt-4 hover:text-green active:text-opacity-60 ease-in-out duration-200'
-                onClick={() => setPrefsOpen(false)}
+                onClick={handleSave}
               >
                 Save and close
               </button>

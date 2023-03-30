@@ -8,13 +8,16 @@ const PreferencesProvider: React.FC<Props> = ({ children }) => {
 
   const getPreferences = () => {
     if (!localStorage.prefs) {
-      const newPrefs = {units: 'metric', apiKey: ''};
+      const newPrefs = { units: 'metric', apiKey: '' };
       localStorage.setItem('prefs', JSON.stringify(newPrefs));
-    };
+    }
     setPrefs(JSON.parse(localStorage.prefs));
   };
 
   useEffect(() => getPreferences(), []);
+
+  const savePreferences = () =>
+    localStorage.setItem('prefs', JSON.stringify(prefs));
 
   const value = useMemo(
     () => ({
@@ -22,8 +25,9 @@ const PreferencesProvider: React.FC<Props> = ({ children }) => {
       setPrefs,
       prefsOpen,
       setPrefsOpen,
+      savePreferences,
     }),
-    [prefs, setPrefs, prefsOpen, setPrefsOpen]
+    [prefs, setPrefs, prefsOpen, setPrefsOpen, savePreferences]
   );
 
   return (

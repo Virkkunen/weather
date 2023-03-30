@@ -119,4 +119,5 @@ export type PreferencesContextType = {
   setPrefs: (pref: any | null) => void;
   prefsOpen: boolean;
   setPrefsOpen: (arg0: boolean) => void;
+  savePreferences: () => void;
 }
