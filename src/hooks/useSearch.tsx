@@ -12,7 +12,7 @@ interface SearchState {
 export const useSearch = (): SearchState => {
   const [searchQuery, setSearchQuery] = useState('');
   const { fetchWeather, setWeatherData, setSearchDisplay, setSearchLoading } = useContext(WeatherContext);
-  const { error, setError } = useContext(ErrorContext);
+  const { setError } = useContext(ErrorContext);
 
   const handleSearchChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value),

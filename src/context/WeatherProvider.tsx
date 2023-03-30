@@ -13,7 +13,7 @@ const WeatherProvider: React.FC<Props> = ({ children }) => {
 
   const { handleSearchSubmit } = useSearch();
   const [query, setQuery] = useState('');
-  const {error, setError} = useContext(ErrorContext);
+  const {setError} = useContext(ErrorContext);
 
   useEffect(() => {
     if (!navigator.geolocation) return;
