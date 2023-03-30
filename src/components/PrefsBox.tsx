@@ -47,7 +47,7 @@ const PrefsBox = () => {
         >
           <div className='fixed inset-0 flex items-center justify-center p-4 drop-shadow hover:drop-shadow-lg'>
             <Dialog.Panel className='w-full max-w-sm rounded-md bg-mantle p-8'>
-              <Dialog.Title className='font-bold text-lg mb-4 text-center'>
+              <Dialog.Title className='font-bold text-lg mb-4'>
                 Preferences
               </Dialog.Title>
               <Dialog.Description as='div'>
@@ -57,7 +57,7 @@ const PrefsBox = () => {
                     checked={switchSide}
                     onChange={handleSwitchChange}
                     className={`${
-                      switchSide ? 'bg-blue' : 'bg-green'
+                      switchSide ? 'bg-lavender' : 'bg-green'
                     } relative inline-flex h-4 w-11 items-center rounded-full`}
                   >
                     <span
@@ -71,7 +71,7 @@ const PrefsBox = () => {
               </Dialog.Description>
               <button
                 type='button'
-                className='font-bold text-lavender mt-4 hover:text-green active:text-opacity-60 ease-in-out duration-200'
+                className='font-bold text-blue mt-4 hover:text-green active:text-opacity-60 ease-in-out duration-200'
                 onClick={handleSave}
               >
                 Save and close
