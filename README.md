@@ -80,5 +80,5 @@ React, TypeScript, Vite, TailwindCSS, Headless UI, RESTful API
     - user: { unit: metric, apiKey: 1w2e3r4t5y }
 - [ ] Pin header on mobile layouts
 - [ ] Fix content under footer
-- [ ] Fix forecast showing wrong dates
+- [x] Fix forecast showing wrong dates
   - https://date-fns.org/docs/Getting-Started
