@@ -1,7 +1,7 @@
 {
   "name": "weather",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://virkkunen.github.io/weather",
   "license": "GPL-3.0-or-later",
   "type": "module",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.13",
+    "date-fns": "^2.29.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0"

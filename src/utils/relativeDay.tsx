@@ -1,10 +1,10 @@
-const relativeDay = (date: string) => {
-  const today = new Date().toISOString().substring(0, 10);
-  const dateApi = new Date(date);
+import { format, isToday, parseISO } from 'date-fns';
 
-  if (date === today) return 'Today';
-
-  return dateApi.toLocaleString('en-US', { weekday: 'long' });
+const relativeDay = (date: string):string => {
+  // I am never using js Date again
+  const dateApi = parseISO(date);
+  if (isToday(dateApi)) return 'Today';
+  return format(dateApi, 'EEEE');
 };
 
 export default relativeDay;
