@@ -1,18 +1,30 @@
-import { useContext, Fragment } from 'react';
+import { useContext, Fragment, useState, useEffect, useCallback } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import ErrorContext from '../context/ErrorContext';
 
 const ErrorBox = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
   const { error, setError, errorMap } = useContext(ErrorContext);
+
+  useEffect(() => {
+    setDialogOpen(Boolean(error));
+  }, [error]);
+
+  const closeDialog = useCallback(() => {
+    setDialogOpen(false);
+  }, [error, dialogOpen]);
+
+  // useEffect(() => {
+  //   if (!dialogOpen) setError(null);
+  // }, [dialogOpen]);
 
   return (
     <Transition
-      show={Boolean(error)}
+      show={dialogOpen}
       as={Fragment}
     >
       <Dialog
-        // open={Boolean(error)}
-        onClose={() => setError(null)}
+        onClose={closeDialog}
         className='relative z-50'
       >
         <Transition.Child
@@ -46,7 +58,7 @@ const ErrorBox = () => {
               <button
                 type='button'
                 className='font-bold text-maroon mt-4 hover:text-red active:text-opacity-60 ease-in-out duration-200'
-                onClick={() => setError(null)}
+                onClick={closeDialog}
               >
                 Close
               </button>

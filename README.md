@@ -78,7 +78,3 @@ React, TypeScript, Vite, TailwindCSS, Headless UI, RESTful API
   - [ ] api key
   - [x] save/retrive from local storage
     - user: { unit: metric, apiKey: 1w2e3r4t5y }
-- [x] Pin header on mobile layouts
-- [x] Fix content under footer
-- [x] Fix forecast showing wrong dates
-  - https://date-fns.org/docs/Getting-Started
