@@ -36,7 +36,9 @@ function App() {
           <SearchBar />
         </Transition>
       </div>
-      <div className='grid grid-cols-1 grid-flow-row place-content-center transition-all ease-in-out duration-300 md:flex md:flex-col'>
+      <div
+        className={`mt-2 mb-16 overflow-y-scroll grid grid-cols-1 grid-flow-row place-content-center transition-all ease-in-out duration-300 md:flex md:flex-col md:my-0`}
+      >
         <div className='md:flex md:flex-row'>
           <Transition
             show={Boolean(weatherData)}
