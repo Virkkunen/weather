@@ -4,7 +4,7 @@ import ErrorContext from '../context/ErrorContext';
 
 const ErrorBox = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const { error, setError, errorMap } = useContext(ErrorContext);
+  const { error, errorMap } = useContext(ErrorContext);
 
   useEffect(() => {
     setDialogOpen(Boolean(error));
@@ -13,10 +13,6 @@ const ErrorBox = () => {
   const closeDialog = useCallback(() => {
     setDialogOpen(false);
   }, [error, dialogOpen]);
-
-  // useEffect(() => {
-  //   if (!dialogOpen) setError(null);
-  // }, [dialogOpen]);
 
   return (
     <Transition
