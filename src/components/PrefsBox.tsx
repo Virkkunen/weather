@@ -17,7 +17,7 @@ const PrefsBox = () => {
   const handleSave = useCallback(() => {
     savePreferences();
     setPrefsOpen(false);
-  }, []);
+  }, [prefs]);
 
   return (
     <Transition show={prefsOpen} as={Fragment}>
