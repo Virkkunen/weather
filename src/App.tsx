@@ -21,7 +21,7 @@ function App() {
       {isLoading && <Loading />}
       <PrefsBox />
       <ErrorBox />
-      <div className='transition ease-in-out duration-200 md:row-span-1 md:row-start-1'>
+      <div className='transition ease-in-out duration-200 max-md:fixed max-md:top-0 max-md:z-50 max-md:w-full md:row-span-1 md:row-start-1'>
         <Header />
         <Transition
           show={searchDisplay}
@@ -37,7 +37,7 @@ function App() {
         </Transition>
       </div>
       <div
-        className={`mt-2 mb-16 overflow-y-scroll grid grid-cols-1 grid-flow-row place-content-center transition-all ease-in-out duration-300 md:row-start-2 md:row-span-4 md:flex md:flex-col md:mx-auto md:my-0 md:max-2xl:items-center 2xl:row-start-2 2xl:row-span-1 2xl:flex-col 2xl:m-0`}
+        className={`${searchDisplay ? 'mt-40' : 'mt-24'} mb-16 overflow-y-scroll grid grid-cols-1 grid-flow-row place-content-center transition-all ease-in-out duration-300 md:row-start-2 md:row-span-4 md:flex md:flex-col md:mx-auto md:my-0 md:max-2xl:items-center 2xl:row-start-2 2xl:row-span-1 2xl:flex-col 2xl:m-0`}
       >
         <div className='xl:flex 2xl:flex-row'>
           <Transition
