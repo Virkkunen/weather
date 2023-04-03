@@ -78,3 +78,5 @@ React, TypeScript, Vite, TailwindCSS, Headless UI, RESTful API
   - [ ] api key
   - [x] save/retrive from local storage
     - user: { unit: metric, apiKey: 1w2e3r4t5y }
+- [ ] Add a manual refresh button
+- [ ] Fix layout on 1366x768 displays
