@@ -4,6 +4,7 @@
 A simple responsive weather app made with React and TypeScript, generated using Vite.
 All weather data provided by [Weather API](https://www.weatherapi.com).
 
+<img alt="GitHub Package.json Version" src="https://img.shields.io/github/package-json/v/virkkunen/weather" /> <img alt="Github License" src="https://img.shields.io/github/license/virkkunen/weather" />
 
 ## Features
 
