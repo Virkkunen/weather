@@ -15,7 +15,7 @@ export default function ForecastDisplay() {
     <div
       className={`m-4 p-8 pb-4 rounded-lg ${
         current.is_day ? `bg-surface0` : `bg-mantle`
-      } grid grid-cols-1 grid-rows-3 drop-shadow hover:drop-shadow-lg md:max-w-sm md:mx-auto`}
+      } grid grid-cols-1 grid-rows-3 drop-shadow hover:drop-shadow-lg 2xl:max-w-sm 2xl:mx-auto`}
     >
       {forecastday.map((day) => (
         <div

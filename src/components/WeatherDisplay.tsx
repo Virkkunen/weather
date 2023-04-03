@@ -47,7 +47,7 @@ export default function WeatherDisplay() {
     <div
       className={`m-4 p-8 rounded-lg ${
         current.is_day ? `bg-surface0` : `bg-mantle`
-      } flex flex-col place-content-center drop-shadow hover:drop-shadow-lg md:max-w-md md:mx-auto gap-2`}
+      } flex flex-col place-content-center drop-shadow hover:drop-shadow-lg 2xl:max-w-md 2xl:mx-auto gap-2`}
     >
       <div className='flex flex-col gap-1 relative'>
         <span className='text-6xl font-mono mb-2'>{units.temp}°</span>

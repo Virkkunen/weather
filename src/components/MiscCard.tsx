@@ -9,7 +9,7 @@ const MiscCard = () => {
     <div
       className={`m-4 p-8 rounded-lg ${
         current.is_day ? `bg-surface0` : `bg-mantle`
-      } flex flex-col place-content-center drop-shadow hover:drop-shadow-lg md:max-w-md md:mx-auto gap-2`}
+      } flex flex-col place-content-center drop-shadow hover:drop-shadow-lg md:max-w-xs 2xl:max-w-md 2xl:mx-auto gap-2`}
     >
       <span className='font-medium'>
         Last updated at:{' '}

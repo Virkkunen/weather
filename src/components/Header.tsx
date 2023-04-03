@@ -17,9 +17,9 @@ export default function Header() {
         className={`container grid grid-flow-col grid-cols-6 grid-rows-1 mx-auto p-8 ${
           !searchDisplay && `rounded-b-lg`
         } 
-      bg-crust shadow-md ease-in-out duration-200 md:relative md:rounded-t-lg ${
-        !searchDisplay && `md:rounded-lg`
-      } md:flex md:flex-row md:justify-evenly md:p-4 md:w-1/2 md:mx-auto md:row-start-1 md:shadow-lg`}
+      bg-crust shadow-md ease-in-out duration-200 md:h-1/2 md:p-4 2xl:relative 2xl:rounded-t-lg ${
+        !searchDisplay && `2xl:rounded-lg`
+      } 2xl:flex 2xl:flex-row 2xl:justify-evenly 2xl:p-4 2xl:w-1/2 2xl:mx-auto 2xl:row-start-1 2xl:shadow-lg`}
       >
         <button
           type='button'
