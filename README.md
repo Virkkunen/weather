@@ -5,6 +5,9 @@ A simple responsive weather app made with React and TypeScript, generated using 
 All weather data provided by [Weather API](https://www.weatherapi.com).
 
 <img alt="GitHub Package.json Version" src="https://img.shields.io/github/package-json/v/virkkunen/weather" /> <img alt="Github License" src="https://img.shields.io/github/license/virkkunen/weather" />
+<br>
+<img alt="GitHub Issues" src="https://img.shields.io/github/issues/virkkunen/weather" />
+<img alt="GitHub Pull Requests" src="https://img.shields.io/github/issues-pr/virkkunen/weather" />
 
 ## Features
 
@@ -71,12 +74,3 @@ VITE_WEATHER_API_KEY=YOUR_API_KEY_HERE
 ## Tech Stack
 
 React, TypeScript, Vite, TailwindCSS, Headless UI, RESTful API
-
-
-## To Do
-- [ ] Settings flyout
-  - [x] metric/imperial units
-  - [ ] api key
-  - [x] save/retrive from local storage
-    - user: { unit: metric, apiKey: 1w2e3r4t5y }
-- [ ] Add a manual refresh button
